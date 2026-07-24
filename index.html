@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análisis de mantenimiento</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="data/movements.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <p class="eyebrow">Prueba técnica · Datos ficticios</p>
+      <h1>Movimientos de mantenimiento</h1>
+      <p>Convierte los registros contables en información útil para decidir.</p>
+    </header>
+
+    <main>
+      <section id="summary" class="panel" aria-labelledby="summary-title">
+        <h2 id="summary-title">Resumen inicial</h2>
+        <p id="record-count">Cargando datos…</p>
+      </section>
+
+      <section id="visualization" class="panel" aria-labelledby="visualization-title">
+        <h2 id="visualization-title">Tu análisis</h2>
+        <p class="empty-state">Reemplaza este espacio con la representación que consideres más útil.</p>
+      </section>
+
+      <section id="details" class="panel" aria-labelledby="details-title">
+        <h2 id="details-title">Datos en crudo</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Planta</th>
+                <th>Categoría</th>
+                <th>Artículo</th>
+                <th>Equipo</th>
+                <th>Importe</th>
+              </tr>
+            </thead>
+            <tbody id="raw-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
