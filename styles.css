@@ -113,3 +113,102 @@ th:last-child {
     padding: 18px;
   }
 }
+
+/* Evita que cualquier elemento ensanche toda la página. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Los contenedores nunca deben superar la pantalla. */
+.page-header,
+main,
+.panel,
+.visualization-header,
+.chart-wrapper {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Chart.js debe respetar el ancho de su contenedor. */
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Solo esta zona puede desplazarse horizontalmente. */
+.table-wrapper {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* La tabla mantiene sus columnas, pero no ensancha la página. */
+.table-wrapper table {
+  width: max-content;
+  min-width: 760px;
+  max-width: none;
+}
+
+@media (max-width: 600px) {
+  .page-header,
+  main {
+    width: calc(100% - 20px);
+    margin-inline: auto;
+  }
+
+  .page-header {
+    padding: 28px 0 18px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.9rem, 10vw, 2.6rem);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  main {
+    gap: 14px;
+    padding-bottom: 28px;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visualization-header {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .filter-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  .chart-wrapper {
+    height: 280px;
+  }
+}
