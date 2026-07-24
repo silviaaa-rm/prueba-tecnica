@@ -2,49 +2,178 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Análisis de mantenimiento</title>
+
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Chart.js se utiliza para representar la evolución mensual. -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+      
     <script src="data/movements.js" defer></script>
+
     <script src="app.js" defer></script>
   </head>
+
   <body>
+  
     <header class="page-header">
       <p class="eyebrow">Prueba técnica · Datos ficticios</p>
+
       <h1>Movimientos de mantenimiento</h1>
-      <p>Convierte los registros contables en información útil para decidir.</p>
+
+      <p>
+        Convierte los registros contables en información útil para decidir.
+      </p>
     </header>
 
     <main>
-      <section id="summary" class="panel" aria-labelledby="summary-title">
-        <h2 id="summary-title">Resumen inicial</h2>
-        <p id="record-count">Cargando datos…</p>
-      </section>
+  <!-- RESUMEN GENERAL -->
+  <section
+    id="summary"
+    class="panel"
+    aria-labelledby="summary-title"
+  >
+    <h2 id="summary-title">Resumen del periodo</h2>
 
-      <section id="visualization" class="panel" aria-labelledby="visualization-title">
-        <h2 id="visualization-title">Tu análisis</h2>
-        <p class="empty-state">Reemplaza este espacio con la representación que consideres más útil.</p>
-      </section>
+    <p id="record-count">Cargando datos…</p>
 
-      <section id="details" class="panel" aria-labelledby="details-title">
-        <h2 id="details-title">Datos en crudo</h2>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Planta</th>
-                <th>Categoría</th>
-                <th>Artículo</th>
-                <th>Equipo</th>
-                <th>Importe</th>
-              </tr>
-            </thead>
-            <tbody id="raw-rows"></tbody>
-          </table>
-        </div>
-      </section>
-    </main>
+    <div class="summary-grid">
+      <!-- Suma de movimientos normales y cancelaciones negativas. -->
+      <article class="summary-card">
+        <span class="summary-label">Gasto neto</span>
+
+        <strong id="net-total" class="summary-value">
+          $0
+        </strong>
+
+        <span class="summary-note">
+          Incluye el efecto de cancelaciones
+        </span>
+      </article>
+
+      <!-- Cantidad total de registros disponibles. -->
+      <article class="summary-card">
+        <span class="summary-label">Movimientos</span>
+
+        <strong id="movement-total" class="summary-value">
+          0
+        </strong>
+
+        <span class="summary-note">
+          Registros entre enero y junio
+        </span>
+      </article>
+
+      <!-- Impacto total de las cancelaciones. -->
+      <article class="summary-card">
+        <span class="summary-label">Cancelaciones</span>
+
+        <strong id="cancellation-total" class="summary-value">
+          $0
+        </strong>
+
+        <span id="cancellation-count" class="summary-note">
+          0 movimientos
+        </span>
+      </article>
+    </div>
+  </section>
+
+  <!-- FILTRO Y GRÁFICA COMPARATIVA -->
+  <section
+    id="visualization"
+    class="panel"
+    aria-labelledby="visualization-title"
+  >
+    <div class="visualization-header">
+      <div>
+        <h2 id="visualization-title">
+          Evolución del gasto por planta
+        </h2>
+
+        <p class="section-description">
+          Compara el gasto neto mensual de enero a junio de 2026.
+        </p>
+      </div>
+
+      <div class="filter-group">
+        <label for="plant-filter">Ver planta</label>
+
+        <select id="plant-filter">
+          <option value="all">Todas las plantas</option>
+          <option value="Planta Norte">Planta Norte</option>
+          <option value="Planta Centro">Planta Centro</option>
+          <option value="Planta Sur">Planta Sur</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="chart-wrapper">
+      <canvas
+        id="monthly-chart"
+        role="img"
+        aria-label="Comparación del gasto mensual de las tres plantas"
+      ></canvas>
+    </div>
+  </section>
+
+  <!-- HALLAZGO -->
+  <section
+    id="finding"
+    class="panel finding"
+    aria-labelledby="finding-title"
+  >
+    <h2 id="finding-title">Hallazgo general del periodo</h2>
+
+    <p>
+      El gasto neto aumentó de
+      <strong>$33,300 en enero</strong> a
+      <strong>$55,000 en junio</strong>, un crecimiento aproximado
+      del <strong>65%</strong>. Planta Centro concentra cerca de la
+      mitad del gasto total y en junio registró una reparación mayor
+      de motor por <strong>$42,000</strong>, el movimiento individual
+      más alto del periodo.
+    </p>
+
+    <small>
+      Este hallazgo considera todos los movimientos registrados entre
+      enero y junio de 2026.
+    </small>
+  </section>
+
+  <!-- DETALLE DE LOS MOVIMIENTOS -->
+  <section
+    id="details"
+    class="panel"
+    aria-labelledby="details-title"
+  >
+    <h2 id="details-title">Detalle de movimientos</h2>
+
+    <p class="section-description">
+      Registros que explican los indicadores y la visualización.
+    </p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Planta</th>
+            <th>Categoría</th>
+            <th>Artículo</th>
+            <th>Equipo</th>
+            <th>Importe</th>
+          </tr>
+        </thead>
+
+        <tbody id="raw-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
   </body>
 </html>

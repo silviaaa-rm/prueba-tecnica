@@ -2,16 +2,16 @@
 
 ## 1. Necesidad priorizada
 
-<!-- ¿Qué necesita entender primero el responsable de mantenimiento? -->
+Prioricé que el encargado de mantenimiento pudiera ver rápido cuánto se está gastando, cómo cambia el gasto mes con mes y qué planta está gastando más.
 
 ## 2. Hallazgo principal
 
-<!-- Describe un hallazgo específico que pueda comprobarse en los datos. -->
+El gasto neto aumentó aproximadamente 65% entre enero y junio. Planta Centro concentra cerca de la mitad del gasto total y registra el movimiento más alto del periodo: una reparación mayor de motor por $42,000.
 
 ## 3. Tratamiento de cancelaciones
 
-<!-- Explica si las incluiste, excluiste o mostraste por separado y por qué. -->
+Las cancelaciones se mantienen con su importe negativo porque representan una reducción del gasto. De esta forma, los indicadores y la gráfica muestran el gasto neto real. De igual forma, son presentadas por separado para que sea más fácil de entender.
 
 ## 4. Siguiente mejora
 
-<!-- ¿Qué mejorarías si tuvieras más tiempo o más datos? -->
+Agregar filtros por categoría y equipo , asi como un hallazgo dinámico que cambie según la planta seleccionada.
